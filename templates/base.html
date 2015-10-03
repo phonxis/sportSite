@@ -1,0 +1,75 @@
+{% load staticfiles %}
+<html>
+
+<head>
+    <link href="{% static 'css/jquery-ui.css' %}" rel="stylesheet" media="screen" />
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" media="screen" />
+
+    {% block css %}
+	{% endblock %}
+
+    <script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
+    <script src="{% static 'js/jquery-ui.js' %}"></script>
+    <script src="{% static 'js/jquery.tablesorter.js' %}"></script>
+
+    {% block js %}
+    {% endblock %}
+
+  <script>
+
+  $(function() {
+		$("table").tablesorter({debug: true})
+          });
+  </script>
+</head>
+
+<body>
+<form method="POST" class="ui-widget">{% csrf_token %}
+    <input type="date" name="date">
+    <input type="text" placeholder="home" name="home" id="tags" value="{{ clubs.0.shortName }}">
+    <input type="number" placeholder="homegoals" name="homegoals">
+    <input type="number" placeholder="awaygoals" name="awaygoals">
+    <input type="text" placeholder="away" name="away" id="tags" value="{{ clubs.1.shortName }}">
+    <input type="text" placeholder="league" name="league">
+    <button type="submit">Add match</button>
+</form>
+
+<div id="qw" class="qw">
+
+</div>
+
+<table id="myTable" class="tablesorter">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Played</th>
+        <th>Won</th>
+        <th>Drawn</th>
+        <th>Lost</th>
+        <th>Goals</th>
+        <th>GD</th>
+        <th>Points</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for table in resultTables %}
+    <tr>
+        <td>{{ table.name }}</td>
+        <td>{{ table.played }}</td>
+        <td>{{ table.won }}</td>
+        <td>{{ table.drawn }}</td>
+        <td>{{ table.lost }}</td>
+        <td>{{ table.forgoals }} - {{ table.against }}</td>
+        <td>{{ table.goalDifferrence }}</td>
+        <td>{{ table.points }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% block content %}
+{% endblock %}
+
+
+</body>
+</html>
