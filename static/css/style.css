@@ -8,8 +8,7 @@ table.tablesorter {
 	text-align: left;
 }
 table.tablesorter thead tr th, table.tablesorter tfoot tr th {
-	background-color: #e6EEEE;
-	border: 1px solid #FFF;
+	background-color: #EEE;
 	font-size: 8pt;
 	padding: 4px;
 }
@@ -23,7 +22,7 @@ table.tablesorter tbody td {
 	color: #3D3D3D;
 	padding: 4px;
 	background-color: #FFF;
-	vertical-align: top;
+	vertical-align: middle;
 }
 table.tablesorter tbody tr.odd td {
 	background-color:#F0F0F6;
@@ -35,5 +34,24 @@ table.tablesorter thead tr .headerSortDown {
 	background-image: url(img/desc.gif);
 }
 table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
-background-color: #8dbdd8;
+	background-color: #e0e0e0;
+}
+
+table.tablesorter tbody tr {
+	border-bottom: 1px dashed rgba(0,0,0,0.25);
+}
+
+.teamsName{
+	text-align: left;
+	width: 30%;
+}
+
+.teamsResult{
+	text-align: center;
+	width: 10%;
+}
+
+.teamIMGtable{
+	width: 20px;
+	height: 20px;
 }

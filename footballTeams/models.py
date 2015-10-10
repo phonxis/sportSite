@@ -2,13 +2,11 @@ from django.db import models
 
 # Create your models here.
 
-
-
-
 class Team(models.Model):
     shortName = models.CharField(unique=True, max_length=30)
     fullName = models.CharField(unique=True, max_length=60)
     nickname = models.CharField(max_length=30)
+    image = models.CharField(max_length=60)
     founded = models.DateField()
     ground = models.CharField(max_length=30)
     groundsCapacity = models.IntegerField()

@@ -1,0 +1,41 @@
+{% load staticfiles %}
+<html>
+
+<head>
+    {% block title %}
+
+    {%  endblock %}
+    <link href="{% static 'css/jquery-ui.css' %}" rel="stylesheet" media="screen" />
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" media="screen" />
+
+    {% block css %}
+	{% endblock %}
+
+    <script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
+    <script src="{% static 'js/jquery-ui.js' %}"></script>
+    <script src="{% static 'js/jquery.tablesorter.js' %}"></script>
+
+    {% block js %}
+    {% endblock %}
+
+  <script>
+
+  $(function() {
+		$("table").tablesorter({debug: true, sortList: [[7,1]]})
+          });
+  </script>
+</head>
+
+<body>
+
+{{ teams.fullName }}
+<img src="{{ teams.image }}">
+
+
+
+{% block content %}
+{% endblock %}
+
+
+</body>
+</html>

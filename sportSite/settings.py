@@ -60,10 +60,7 @@ WSGI_APPLICATION = 'sportSite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        #'NAME': 'sportsite',
-        #'NAME': 'devsport2', #well work
-        #'NAME': 'devsport3',
-        'NAME': 'devsport4',
+        'NAME': 'devsport6',
         'USER': 'phonx',
         'PASSWORD': '4602161',
         'HOST': 'localhost',

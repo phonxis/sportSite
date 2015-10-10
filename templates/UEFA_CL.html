@@ -1,8 +1,67 @@
 {% extends "base.html" %}
 {% load staticfiles %}
+<html>
 
-{% block js %}
-{% endblock %}
+<head>
+    {% block title %}
+        <title>UEFA Champions League</title>
+    {%  endblock %}
 
-{% block content %}
-{% endblock %}
+    {% block css %}
+	{% endblock %}
+
+    {% block js %}
+    {% endblock %}
+
+</head>
+
+<body>
+
+    {% block league %}
+        <input type="text" placeholder="league" name="league" required value="UEFA Champions League">
+    {% endblock %}
+
+    <div class="col-md-6 column">
+        {% block table %}
+        {% for resultTable in results %}
+            <table id="myTable" class="tablesorter">
+                <caption><b>Group {{ resultTable.0.group }}</b></caption>
+                <thead>
+                    <tr>
+                        <th class="teamsName"><abbr title="Team name">Name</abbr></th>
+                        <th class="teamsResult"><abbr title="Played">P</abbr></th>
+                        <th class="teamsResult"><abbr title="Won">W</abbr></th>
+                        <th class="teamsResult"><abbr title="Drawn">D</abbr></th>
+                        <th class="teamsResult"><abbr title="Lost">L</abbr></th>
+                        <th class="teamsResult"><abbr title="Goals">G</abbr></th>
+                        <th class="teamsResult"><abbr title="Goal difference">GD</abbr></th>
+                        <th class="teamsResult"><abbr title="Points">Pts</abbr></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for table in resultTable %}
+                        <tr>
+                            <td class="teamsName">
+                                <img src="{{ table.name.image }}" class="teamIMGtable">
+                                <a href="/team/{{ table.name }}">{{ table.name }}</a>
+                            </td>
+                            <td class="teamsResult">{{ table.played }}</td>
+                            <td class="teamsResult">{{ table.won }}</td>
+                            <td class="teamsResult">{{ table.drawn }}</td>
+                            <td class="teamsResult">{{ table.lost }}</td>
+                            <td class="teamsResult">{{ table.forgoals }} - {{ table.against }}</td>
+                            <td class="teamsResult">{{ table.goalDifferrence }}</td>
+                            <td class="teamsResult">{{ table.points }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endfor %}
+        {% endblock %}
+    </div>
+
+    {% block content %}
+    {% endblock %}
+
+</body>
+</html>
